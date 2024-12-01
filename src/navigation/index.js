@@ -9,6 +9,9 @@ import HomeScreen from '../screens/home';
 import OtpScreen from '../screens/otp';
 import BookingHistoryScreen from '../screens/bookingHistory';
 import DrawerMenu from '../components/drawerMenu';
+import NotificationsOffersScreen from '../screens/notificationAndOffers';
+import PaymentMethodsScreen from '../screens/paymentMethods';
+import AboutScreen from '../screens/about';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +63,11 @@ const AppNavigator = () => {
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="OtpScreen" component={OtpScreen} options={{ headerShown: false }} />
         <Stack.Screen name="BookingHistoryScreen" component={BookingHistoryScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="NotificationAndOffersScreen" component={NotificationsOffersScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PaymentMethodsScreen" component={PaymentMethodsScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ headerShown: false }} />
+
+
 
       </Stack.Navigator>
 

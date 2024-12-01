@@ -44,13 +44,19 @@ const DrawerMenu = () => {
       buttonId: 3,
       buttonName: 'Notification & Offer',
       buttonIcon: APP_ICONS.NOTIFICATION_BELL,
-      onPress: () => console.log('Booking History'),
+      onPress: () => {
+        navigation.navigate("NotificationAndOffersScreen");
+        closeSideDrawer();
+      }
     },
     {
       buttonId: 4,
       buttonName: 'Payment Methods',
       buttonIcon: APP_ICONS.CURRENCY,
-      onPress: () => console.log('Booking History'),
+      onPress: () => {
+        navigation.navigate("PaymentMethodsScreen");
+        closeSideDrawer();
+      }
     },
     {
       buttonId: 5,
@@ -62,7 +68,10 @@ const DrawerMenu = () => {
       buttonId: 6,
       buttonName: 'About',
       buttonIcon: APP_ICONS.INFO,
-      onPress: () => console.log('Booking History'),
+      onPress: () => {
+        navigation.navigate("AboutScreen");
+        closeSideDrawer();
+      }
     },
   ];
 

@@ -72,10 +72,13 @@ export const LIGHT_COLORS = {
     // Additional shades for flexibility
     RED_LIGHT: '#ff8a80',
     RED_DARK: '#b71c1c',
+    RED_BRIGHT: "#D02020",
     BLUE_LIGHT: '#82b1ff',
     BLUE_DARK: '#0d47a1',
-    GREEN_LIGHT: '#a5d6a7',
+    GREEN_LIGHT: '#66CA18',
+    YELLOW_LIGHT:"#EFD40B",
     GREEN_DARK: '#1b5e20',
+    GRAY: '#AAAAAA',
     GRAY_LIGHT: '#F4F4F4', // Lighter gray suitable for dark backgrounds
   };
   

@@ -4,6 +4,8 @@ import CustomScreenHeader from '../../components/screenHeader';
 import { APP_ICONS } from '../../utils/icons';
 import { useDispatch } from 'react-redux';
 import { closeDrawerMenu, openDrawerMenu } from '../../components/drawerMenu/reducers';
+import BottomSheet from '../../components/bottomSheet';
+import BottomSheetHome from '../../components/bottomSheet/components/bottomSheetHome';
 
 const HomeScreen = ({ navigation }) => {
 
@@ -28,7 +30,10 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-       <CustomScreenHeader
+<BottomSheet>
+       <BottomSheetHome />
+      </BottomSheet>  
+           <CustomScreenHeader
           leadingIcon={APP_ICONS.HAMBURGER}
           onLeadingIconPress={openSideDrawer}
           trailingIcon={APP_ICONS.NOTIFICATION_BELL}

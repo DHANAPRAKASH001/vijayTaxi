@@ -42,6 +42,13 @@ VERSION CONTROL
       initial commit with project setup including utilities, navigation, routes, api manager, theming and other basics along with screen UIs
 
 
+02 DECEMBER 2024
+
+      BRANCH : developemnt
+
+      COMMIT MESSAGE :
+      completed drawer and its belonged screens except support
+
 -------------------------------------------------
-[   README LAST UPDATED AT - 01 DECEMBER 2024   ]
+[   README LAST UPDATED AT - 02 DECEMBER 2024   ]
 -------------------------------------------------
