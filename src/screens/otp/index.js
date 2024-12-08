@@ -41,6 +41,11 @@ const OtpScreen = ({navigation}) => {
     navigation.navigate('HomeScreen');
   };
 
+  const handleLeadingPress = () => {
+    navigation.goBack()
+
+  }
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -52,6 +57,7 @@ const OtpScreen = ({navigation}) => {
         keyboardShouldPersistTaps="handled">
         <CustomScreenHeader
           leadingIcon={APP_ICONS.BACK}
+          onLeadingIconPress={handleLeadingPress}
           // title="OTP Verification"
           titleStyle={styles.headerTitle}
         />

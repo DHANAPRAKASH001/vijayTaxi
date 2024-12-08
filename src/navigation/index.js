@@ -12,6 +12,10 @@ import DrawerMenu from '../components/drawerMenu';
 import NotificationsOffersScreen from '../screens/notificationAndOffers';
 import PaymentMethodsScreen from '../screens/paymentMethods';
 import AboutScreen from '../screens/about';
+import PermissionsScreen from '../screens/permissions';
+import HelpAndSupportScreen from '../screens/helpAndSupport';
+import MyAccountScreen from '../screens/myAccount';
+import RideRelatedScreen from '../screens/rideRelated';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +32,7 @@ const AppNavigator = () => {
         // Simulate a 10-second delay
         await new Promise(resolve => setTimeout(resolve, 10000));
 
-        const credentials = true; // Simulated credential check
+        const credentials = false; // Simulated credential check
         if (credentials) {
           console.log('User credentials found:', credentials);
           // Uncomment to update Redux state: dispatch(setLogin(true));
@@ -58,7 +62,7 @@ const AppNavigator = () => {
     <NavigationContainer>
              
 
-      <Stack.Navigator initialRouteName={isLogin ? 'HomeScreen' : 'OtpScreen'}>
+      <Stack.Navigator initialRouteName={isLogin ? 'RideRelatedScreen' : 'RideRelatedScreen'}>
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="OtpScreen" component={OtpScreen} options={{ headerShown: false }} />
@@ -66,6 +70,11 @@ const AppNavigator = () => {
         <Stack.Screen name="NotificationAndOffersScreen" component={NotificationsOffersScreen} options={{ headerShown: false }} />
         <Stack.Screen name="PaymentMethodsScreen" component={PaymentMethodsScreen} options={{ headerShown: false }} />
         <Stack.Screen name="AboutScreen" component={AboutScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PermissionsScreen" component={PermissionsScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="HelpAndSupportScreen" component={HelpAndSupportScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="MyAccountScreen" component={MyAccountScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="RideRelatedScreen" component={RideRelatedScreen} options={{ headerShown: false }} />
+
 
 
 

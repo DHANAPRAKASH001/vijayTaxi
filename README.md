@@ -49,6 +49,14 @@ VERSION CONTROL
       COMMIT MESSAGE :
       completed drawer and its belonged screens except support
 
+09 DECEMBER 2024
+
+      BRANCH : developemnt
+
+      COMMIT MESSAGE :
+      working with support screens
+      completed HelpAndSupprt,MyAccount,RideRelated,Permissions,InitialAuthScreens UI
+
 -------------------------------------------------
-[   README LAST UPDATED AT - 02 DECEMBER 2024   ]
+[   README LAST UPDATED AT - 09 DECEMBER 2024   ]
 -------------------------------------------------

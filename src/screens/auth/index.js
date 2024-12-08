@@ -1,5 +1,4 @@
-// src/screens/LoginScreen.js
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -9,16 +8,36 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Image,
+  Alert,
 } from 'react-native';
-import { moderateScale } from 'react-native-size-matters';
+import {moderateScale} from 'react-native-size-matters';
 import CustomButton from '../../components/customButton';
+import {APP_IMAGES} from '../../utils/images';
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = ({navigation}) => {
   const [phone, setPhone] = useState('');
 
   const handleLogin = () => {
-    // Handle login logic here
-    console.log(`Phone: ${phone}`);
+    if (!phone) {
+      Alert.alert('Validation Error', 'Please enter your phone number.');
+    } else if (phone.length !== 10) {
+      Alert.alert('Validation Error', 'Phone number must be 10 digits.');
+    } else {
+      // Handle login logic here
+      console.log(`Phone: ${phone}`);
+      navigation.navigate("OtpScreen")
+    }
+  };
+
+  const handleTermsPress = () => {
+    // Navigate to Terms and Conditions page or show alert
+    Alert.alert('Terms & Conditions', 'Here are the terms and conditions...');
+  };
+
+  const handlePrivacyPress = () => {
+    // Navigate to Privacy Policy page or show alert
+    Alert.alert('Privacy Policy', 'Here is the privacy policy...');
   };
 
   return (
@@ -27,13 +46,22 @@ const LoginScreen = ({ navigation }) => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={moderateScale(20)} // Adjust based on your header height
     >
-      <ScrollView contentContainerStyle={styles.scrollContainer} showsVerticalScrollIndicator={false}>
-        <View style={styles.sectionHeader} />
-        <View style={styles.sectionBody} />
+      <ScrollView
+        contentContainerStyle={styles.scrollContainer}
+        showsVerticalScrollIndicator={false}>
+        <View style={styles.sectionHeader}>
+          <Image
+            source={APP_IMAGES.WELCOME_TO_VIJAY_CONNECT}
+            style={styles.headerImage}
+          />
+        </View>
+        <View style={styles.sectionBody}>
+          <Image source={APP_IMAGES.TAXI_ONE} style={styles.bodyImage} />
+        </View>
         <View style={styles.sectionFooter}>
           <Text style={styles.title}>Login with your Phone Number</Text>
           <TextInput
-            style={[styles.input, { textAlignVertical: 'center' }]} // Ensure placeholder is vertically centered
+            style={[styles.input, {textAlignVertical: 'center'}]} // Ensure placeholder is vertically centered
             placeholder="eg.8888679067"
             placeholderTextColor="#888"
             keyboardType="phone-pad"
@@ -41,12 +69,22 @@ const LoginScreen = ({ navigation }) => {
             onChangeText={setPhone}
           />
 
-          {/* <TouchableOpacity style={styles.button} onPress={handleLogin}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity> */}
-          <CustomButton buttonText={"Send OTP"} buttonStyle={{ width: "100%" }} />
+          <CustomButton
+            buttonText={'Send OTP'}
+            buttonStyle={{width: '100%'}}
+            onPress={handleLogin}
+          />
+
           <Text style={styles.footerText}>
-            By logging in, you agree to our terms and conditions.
+            By Continuing, You Agree to the
+            <Text style={styles.linkText} onPress={handleTermsPress}>
+              {' '}
+              VijayConnect’s Terms & Conditions
+            </Text>{' '}
+            And{' '}
+            <Text style={styles.linkText} onPress={handlePrivacyPress}>
+              Privacy Policy
+            </Text>
           </Text>
         </View>
       </ScrollView>
@@ -57,28 +95,27 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
-    padding: moderateScale(15)
   },
   scrollContainer: {
     flexGrow: 1,
-    backgroundColor: "green"
   },
   sectionHeader: {
     height: moderateScale(200),
-    // backgroundColor: 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   sectionBody: {
     flex: 1,
-    // backgroundColor: 'green',
-    minHeight: moderateScale(200),
+    minHeight: moderateScale(300),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   sectionFooter: {
     flex: 1,
-    // backgroundColor: 'blue',
     alignItems: 'center',
-    justifyContent: "center"
-    
+    justifyContent: 'center',
+    padding: moderateScale(15),
+    marginVertical: moderateScale(15),
   },
   title: {
     fontSize: moderateScale(18),
@@ -91,13 +128,14 @@ const styles = StyleSheet.create({
     height: moderateScale(45),
     backgroundColor: '#fff',
     borderRadius: moderateScale(8),
-    justifyContent: 'center', // Centers placeholder vertically
-    alignItems: 'center', // Centers placeholder horizontally
+    justifyContent: 'center',
+    alignItems: 'center',
     position: 'relative',
     marginBottom: moderateScale(15),
-    borderColor: "grey",
-    borderWidth:2,alignSelf: "center",
-    textAlign: "center",
+    borderColor: 'grey',
+    borderWidth: 2,
+    alignSelf: 'center',
+    textAlign: 'center',
   },
   button: {
     width: '100%',
@@ -106,7 +144,6 @@ const styles = StyleSheet.create({
     borderRadius: moderateScale(8),
     justifyContent: 'center',
     alignItems: 'center',
-    // marginBottom: moderateScale(10),
   },
   buttonText: {
     fontSize: moderateScale(16),
@@ -118,6 +155,20 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     marginTop: moderateScale(10),
+  },
+  headerImage: {
+    height: moderateScale(300),
+    width: moderateScale(200),
+    resizeMode: 'contain',
+  },
+  bodyImage: {
+    height: moderateScale(300),
+    width: '100%',
+    resizeMode: 'contain',
+  },
+  linkText: {
+    color: 'red',
+    textDecorationLine: 'underline',
   },
 });
 

@@ -30,9 +30,9 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-<BottomSheet>
+{/* <BottomSheet>
        <BottomSheetHome />
-      </BottomSheet>  
+      </BottomSheet>   */}
            <CustomScreenHeader
           leadingIcon={APP_ICONS.HAMBURGER}
           onLeadingIconPress={openSideDrawer}
