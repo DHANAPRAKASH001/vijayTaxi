@@ -1,31 +1,52 @@
-import { takeLatest, call, put } from "redux-saga/effects";
-import { startLogin, loginSuccess, loginFailure } from "./reducers";
-import { loginApi } from "./services";
-import { Logger } from "../../utils/logger";
+import {takeLatest, call, put} from 'redux-saga/effects';
+import {
+  startLogin,
+  loginSuccess,
+  loginFailure,
+  sendOtpFailed,
+} from './reducers';
+import {requestLoginOtpApi} from './services';
+import {Logger} from '../../utils/logger';
+import {showCustomNotification} from '../../components/customNotification/reducers';
 
-function* login(action) {
-    try {
-        // Show loader screen and log the start of the login process
-        // yield put(showLoaderScreen());
-        Logger.info("Login saga started", { email: action.payload.email });
+function* requestLoginOtpSaga(action) {
+  try {
+    const response = yield call(requestLoginOtpApi, action.payload);
 
-        // Call the login API with provided credentials
-        const response = yield call(loginApi, action.payload);
-        Logger.info("Login API call success", { response: response.data });
+    if (response.status === 201) {
+      yield put(loginSuccess());
 
-        // Dispatch login success if API call is successful
-        yield put(loginSuccess(response.data)); // Assuming response.data contains user info
-        Logger.info("Login successful, user data stored", { user: response.data });
-
-    } catch (error) {
-        // Dispatch login failure in case of an error
-        // yield put(loginFailure(error.message || "Login failed"));
-        Logger.error("Login API call failed");
-    } finally {
-        // Hide loader screen and log the completion of the login saga
-        // yield put(hideLoaderScreen());
-        Logger.info("Login saga completed");
+      //   yield put(showCustomNotification({
+      //     message: response.message, // Use the message from the response
+      //     type: 'success',           // Optional, set notification type
+      //     isTop: true,               // Optional, position of the notification (top or bottom)
+      //   }));
+    } else {
+      yield put(
+        showCustomNotification({
+          message: response.data.message, // Use the error message from response
+          type: 'failure', // Optional, set notification type
+          isTop: false, // Optional, position of the notification (top or bottom)
+        }),
+      );
     }
+  } catch (error) {
+    // In case of an error, dispatch failure
+    yield put(sendOtpFailed());
+
+    // Dispatch failure notification
+    yield put(
+      showCustomNotification({
+        message: error.message || 'Something went wrong', // Use error message if available
+        type: 'failure', // Optional, set notification type
+        // Optional, position of the notification (top or bottom)
+      }),
+    );
+
+    // Logger.error('Login API call failed', error);
+  } finally {
+    // Logger.info('Login saga completed');
+  }
 }
 
-export const authSagas = [takeLatest(startLogin.type, login)];
+export const authSagas = [takeLatest(startLogin.type, requestLoginOtpSaga)];

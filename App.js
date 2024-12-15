@@ -8,6 +8,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import DrawerMenu from './src/components/drawerMenu';
 
 
+
 const App = () => {
   return (
     <Provider store={store}>

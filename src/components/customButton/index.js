@@ -32,9 +32,9 @@ const CustomButton = ({
 
 const styles = StyleSheet.create({
   button: {
-    height: moderateScale(35),
+    height: moderateScale(50),
     borderRadius: 10,
-    backgroundColor: 'purple', // Default button color
+    backgroundColor: '#7021F0', // Default button color
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,

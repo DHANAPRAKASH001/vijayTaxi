@@ -57,6 +57,14 @@ VERSION CONTROL
       working with support screens
       completed HelpAndSupprt,MyAccount,RideRelated,Permissions,InitialAuthScreens UI
 
+16 DECEMBER 2024
+
+      BRANCH : developemnt
+
+      COMMIT MESSAGE :
+      working with maps
+      completed initial maps screen. workin with places search bar
+
 -------------------------------------------------
-[   README LAST UPDATED AT - 09 DECEMBER 2024   ]
+[   README LAST UPDATED AT - 16 DECEMBER 2024   ]
 -------------------------------------------------

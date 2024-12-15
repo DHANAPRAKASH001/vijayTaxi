@@ -16,6 +16,7 @@ import PermissionsScreen from '../screens/permissions';
 import HelpAndSupportScreen from '../screens/helpAndSupport';
 import MyAccountScreen from '../screens/myAccount';
 import RideRelatedScreen from '../screens/rideRelated';
+import CustomNotification from '../components/customNotification';
 
 const Stack = createNativeStackNavigator();
 
@@ -62,7 +63,7 @@ const AppNavigator = () => {
     <NavigationContainer>
              
 
-      <Stack.Navigator initialRouteName={isLogin ? 'RideRelatedScreen' : 'RideRelatedScreen'}>
+      <Stack.Navigator initialRouteName={isLogin ? 'HomeScreen' : 'HomeScreen'}>
         <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ headerShown: false }} />
         <Stack.Screen name="OtpScreen" component={OtpScreen} options={{ headerShown: false }} />
@@ -81,6 +82,7 @@ const AppNavigator = () => {
       </Stack.Navigator>
 
       <DrawerMenu />
+      <CustomNotification />
     </NavigationContainer>
   );
 };

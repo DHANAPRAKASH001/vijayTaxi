@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import store from '../store';
 
 // Base URL for API
-const BASE_URL = "";
+const BASE_URL = "http://192.168.1.34:3000";
 
 // Create Axios instance for main API
 export const mainAxios = axios.create({
